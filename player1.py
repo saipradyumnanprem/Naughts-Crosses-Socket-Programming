@@ -2,13 +2,10 @@
 import socket
 import threading
 import gameboard as gb
-#import pyglet, os
-
-#pyglet.font.add_file('ARCADE_N.ttf')
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from tkinter import *
 from tkinter import messagebox
-
 
 # using the loopback address as my server IP address
 serverAddress = '127.0.0.1'
@@ -111,14 +108,14 @@ createThread(receiveMove)
 
 
 window=Tk()
-window.title("Tic - Tac - Toe")
+window.title("Naughts&Crosses - Player 1")
 window.geometry("940x700+0+0")
 window.configure(background = '#1919A6')
 
 tops = Frame(window, bg ='#1919A6', pady =2, width = 1350, height=100, relief = RIDGE)
 tops.grid(row=0, column =0)
 
-lblTitle = Label(tops, font=('Abyssinica SIL',35,'normal'),text="TIC TAC TOE", bd=21, bg='#1919A6',fg='#ffff00',justify = CENTER)
+lblTitle = Label(tops, font=('Abyssinica SIL',35,'normal'),text="Naughts & Crosses", bd=21, bg='#1919A6',fg='#ffff00',justify = CENTER)
 lblTitle.grid(row=0,column = 0)
 
 mainFrame = Frame (window, bg = '#1919A6', bd=10,width = 1350, height=600, relief=RIDGE) 
@@ -264,7 +261,8 @@ def play():
         board.recordGamePlayed()
         board.resetGameBoard()
         board.lastMove = "player1"
-        
+
+
 def gameOver():
     isCon = False
     start = False
@@ -274,9 +272,9 @@ def gameOver():
     board.numGames = board.numGames - 1
     comData = board.computeStats()
     lblGames["text"] = comData["numGames"]
-    lblWon["text"] = comData["wins"]["O"]
-    lblLost["text"] = comData["loss"]["O"]
-    lblTies["text"] = comData["ties"]
+    lblWon = comData["wins"]["O"]
+    lblLost = comData["loss"]["O"]
+    lblTies = comData["ties"]
     lblTurn["text"] = "opponent"
     reset()
 
@@ -361,6 +359,7 @@ lbl=Label(rightFrame2, font=('Abyssinica SIL', 15, 'bold'), text="Ties:", padx=2
 lbl.grid (row=3, column=0, sticky=W)
 lblTies=Label(rightFrame2, font=('Abyssinica SIL', 15, 'bold'), text=" ",padx=2, pady=2, bg="#1919A6",width=8) 
 lblTies.grid (row=3, column=1, sticky=W)
+
 
 lbl=Label(rightFrame1, font=('Abyssinica SIL', 15, 'bold'), text="Host:",padx=2, pady=2, fg="#ffff00", bg="#1919A6") 
 lbl.grid (row=0, column=0, sticky=W)

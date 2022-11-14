@@ -116,14 +116,14 @@ createThread(receiveMove)
 
 
 window=Tk()
-window.title("Tic - Tac - Toe")
+window.title("Naughts&Crosses - Player 2")
 window.geometry("940x700+0+0")
 window.configure(background = '#1919A6')
 
 tops = Frame(window, bg ='#1919A6', pady =2, width = 1350, height=100, relief = RIDGE)
 tops.grid(row=0, column =0)
 
-lblTitle = Label(tops, font=('Abyssinica SIL',35,'bold'),text="Tic Tac Toe", bd=21, bg='#1919A6',fg='#ffff00',justify = CENTER)
+lblTitle = Label(tops, font=('Abyssinica SIL',35,'bold'),text="Naughts & Crosses", bd=21, bg='#1919A6',fg='#ffff00',justify = CENTER)
 lblTitle.grid(row=0,column = 0)
 
 mainFrame = Frame (window, bg = '#1919A6', bd=10,width = 1350, height=600, relief=RIDGE) 
